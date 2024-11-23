@@ -1,0 +1,86 @@
+O projeto Philosophers da 42 é um excelente exercício para aprender sobre problemas clássicos de concorrência e a implementação de threads. O objetivo é simular o problema dos "Filósofos que Jantam", onde você precisa gerenciar recursos compartilhados (os garfos) de maneira a evitar condições como deadlock e race conditions. Aqui está um guia de como abordar o projeto, em pseudocódigo e ideias fundamentais:
+
+1. Entenda o problema do dining philosophers:
+
+	Você tem um número de filósofos (N) que alternam entre pensar e comer.
+
+	Para comer, cada filósofo precisa de dois garfos (o da esquerda e o da direita).
+
+	Cada garfo só pode ser usado por um filósofo por vez.
+
+	Seu programa deve garantir que nenhum filósofo passe fome e que não ocorra deadlock.
+
+2. Planeje as entidades principais
+
+Filósofo:
+
+Representado por uma thread.
+Ciclo de vida: pensar → pegar garfos → comer → devolver garfos.
+Garfo:
+
+Representado como um recurso compartilhado.
+Pode ser implementado com um mutex.
+Mesa:
+
+Controla a interação entre filósofos e garfos.
+Pode ter variáveis globais ou estruturas compartilhadas.
+
+3. Passos principais do pseudocódigo
+
+Inicialização:
+
+Criar threads para cada filósofo.
+Inicializar mutexes para cada garfo.
+Configurar uma estrutura de controle para a mesa.
+
+Ciclo dos filósofos:
+
+Enquanto o programa não for interrompido:
+
+Pensar (sleep ou realizar alguma ação fictícia).
+
+Tentar pegar os garfos:
+
+Bloquear mutexes dos garfos (esquerdo e direito).
+Comer (sleep ou realizar alguma ação fictícia).
+
+Devolver os garfos:
+Liberar mutexes dos garfos.
+Continuar o ciclo.
+
+Finalização:
+
+Garantir que todas as threads sejam terminadas corretamente.
+Destruir os mutexes para liberar recursos.
+4. Evitar problemas clássicos
+Deadlock:
+
+Ocorre quando os filósofos ficam presos esperando pelos garfos.
+Solução prática:
+Alterne a ordem em que os filósofos pegam os garfos (ex.: filósofos pares pegam o garfo da esquerda primeiro, ímpares pegam o da direita).
+Use um mutex global para garantir que no máximo (N - 1) filósofos tentem pegar garfos ao mesmo tempo.
+Race conditions:
+
+Ocorre quando várias threads acessam e modificam variáveis compartilhadas sem proteção.
+Solução:
+Use mutexes para proteger o acesso aos garfos e outras variáveis compartilhadas.
+5. Divisão prática em etapas
+Comece pequeno:
+
+Implemente um filósofo e dois garfos para testar as mecânicas básicas.
+Garanta que ele consegue pegar os garfos, comer, e devolvê-los.
+Adicione os outros filósofos:
+
+Escale para N filósofos e garfos.
+Teste cenários simples e certifique-se de que não há deadlock.
+Implemente melhorias:
+
+Adicione verificações para evitar starvation (filósofos famintos).
+Monitore o tempo de execução para detectar gargalos.
+6. Estude os tópicos necessários
+Threads: pthread_create, pthread_join.
+Mutexes: pthread_mutex_init, pthread_mutex_lock, pthread_mutex_unlock, pthread_mutex_destroy.
+Conceitos de concorrência: deadlock, race conditions, starvation.
+Funções de tempo: usleep ou similares, para simular o tempo de pensar/comer.
+Debbuging de threads: Use ferramentas como valgrind para detectar problemas de memória ou concorrência.
+Se seguir essa abordagem e for implementando de forma incremental, você terá uma base sólida para o projeto. Boa sorte!
