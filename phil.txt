@@ -84,3 +84,55 @@ Conceitos de concorrência: deadlock, race conditions, starvation.
 Funções de tempo: usleep ou similares, para simular o tempo de pensar/comer.
 Debbuging de threads: Use ferramentas como valgrind para detectar problemas de memória ou concorrência.
 Se seguir essa abordagem e for implementando de forma incremental, você terá uma base sólida para o projeto. Boa sorte!
+
+________________________________________________________________________________________________
+
+
+F O R B I D D E N
+
+________________________________________________________________________________________________
+
+
+
+
+1. Proibição de bibliotecas externas
+Proibição: Não é permitido usar bibliotecas externas (como OpenMP, Boost, ou outras que facilitam o gerenciamento de threads).
+Permissão: Use apenas as funções nativas da biblioteca padrão C, como as da pthread.
+2. Proibição de modificações estruturais no problema
+Proibição: Você não pode alterar as regras do problema.
+Exemplo: Não pode permitir que dois filósofos compartilhem um garfo ou modificar a lógica básica de comer/pensar.
+Cuidados: A lógica do problema precisa seguir o conceito clássico do "Dining Philosophers".
+3. Restrições quanto ao uso de funções específicas
+Funções proibidas:
+Geralmente, funções como fork() são proibidas (porque elas criam processos, não threads).
+Não use funções como sleep() se o projeto exigir precisão em milissegundos. Use usleep() ou similares para maior controle do tempo.
+Funções obrigatórias:
+Use funções como pthread_create, pthread_join, pthread_mutex_lock, e pthread_mutex_unlock para gerenciar threads e mutexes.
+4. Evitar busy-waiting (espera ocupada)
+Proibição: Não implemente loops infinitos para verificar se recursos estão disponíveis (exemplo: ficar verificando se um garfo está livre sem sleep).
+Solução: Use mutexes para gerenciar acesso aos recursos de forma eficiente.
+5. Cuidados com a implementação de deadlocks
+Proibição implícita: Você não pode implementar uma solução que permita deadlock.
+Cuidados:
+Certifique-se de que sua lógica evita deadlocks, seja por alternância na ordem de pegar os garfos, seja limitando o número de filósofos que tentam pegar garfos simultaneamente.
+6. Tratamento de erros
+Obrigatório: Você deve tratar erros em todas as funções do sistema (exemplo: pthread_create ou pthread_mutex_init).
+Exemplo: Se um mutex não for inicializado corretamente, seu programa deve encerrar com uma mensagem de erro.
+7. Limite de tempo e precisão
+Restrições comuns:
+Deve ser possível configurar tempos (em milissegundos) para pensar, comer e morrer.
+Sua lógica deve respeitar esses tempos com precisão razoável.
+O programa não deve causar atrasos desnecessários ou ser mais lento do que o esperado.
+8. Sem memória alocada sem liberar
+Obrigatório: Você deve liberar toda a memória alocada dinamicamente.
+Cuidados:
+Use ferramentas como valgrind para garantir que não há vazamentos de memória.
+Certifique-se de destruir todos os mutexes (pthread_mutex_destroy) antes de encerrar o programa.
+9. Sem uso de variáveis globais desnecessárias
+Proibição implícita: O uso de variáveis globais não deve ser excessivo.
+Cuidados:
+Use estruturas para compartilhar informações entre threads, em vez de depender apenas de globais.
+10. O programa deve ser determinístico
+Cuidados:
+O comportamento do programa deve ser previsível.
+Não permita resultados inconsistentes devido a condições de corrida.
