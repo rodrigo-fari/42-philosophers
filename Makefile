@@ -1,5 +1,8 @@
+# Makeflag
+MAKEFLAGS += -s
+
 # Nome do executável
-NAME				= philosophers
+NAME				= philo
 
 # Diretórios
 LIBFT				= ./libft/libft.a
@@ -15,6 +18,7 @@ RM					= rm -rf
 # Arquivos-fonte
 SRCS				= $(wildcard $(SRC_DIR)*.c)
 
+
 # Arquivos-objeto
 OBJS				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
@@ -24,7 +28,10 @@ all: 				$(NAME)
 # Regra para criar o executável
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+#					clear
+					@echo " "
 					@echo "✅ $(NAME) Compiled Successfully!"
+					@echo " "
 
 # Regra para compilar objetos
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
@@ -38,14 +45,21 @@ $(LIBFT):
 
 # Limpeza
 clean:
-					@$(RM) $(OBJ_DIR)
+					@$(RM) $(OBJ_DIR)/*
 					@make clean -C ./libft
+					clear
+					@echo " "
 					@echo "🗑️ All objects removed."
+					@echo " "
 
 fclean: 			clean
 					@$(RM) $(NAME)
+					@$(RM) $(OBJ_DIR)
 					@make fclean -C ./libft
+					clear
+					@echo " "
 					@echo "🗑️ All clean."
+					@echo " "
 
 re: 				fclean all
 
