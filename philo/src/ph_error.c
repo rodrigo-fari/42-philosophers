@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   ph_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/11/28 20:53:47 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/11/28 15:57:28 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/11/28 16:59:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int main(int ac, char **av)
+void	printerror(char *str)
 {
-	if (ac < 5 || ac > 6)
-		printerror("Invelid arguments.");
-	ph_parse(av);
-	return(0);
+	ft_printf(RED"[Error] "RESET);
+	ft_printf("%s", str);
+	ft_printf("\n");
+	exit (1);
 }
 
-// long time = get_time2();
-//print current time(time);
-//para printar info na console
+// void	frees()
+// {
+	
+// }

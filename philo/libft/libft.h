@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/11/26 11:30:33 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:54:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		ft_isspace(int c);
 int		free_splits(char **line);
 int		ft_atoi(const char *nptr);
 int		ft_strnlen(char *str, int c);
@@ -50,6 +51,8 @@ int		ft_matrix_finder(char *str, int c);
 int		ft_str_chr_count(char *str, int c);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+long	ft_atol(const char *s);
 
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);

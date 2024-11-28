@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/11/28 20:53:47 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/11/28 16:54:27 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/11/28 16:54:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philo.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int		ft_isspace(int c)
 {
-	if (ac < 5 || ac > 6)
-		printerror("Invelid arguments.");
-	ph_parse(av);
-	return(0);
-}
+	const char	*str;
+	int			i;
 
-// long time = get_time2();
-//print current time(time);
-//para printar info na console
+	i = 0;
+	str = " \n\t\v\f\r";
+	while (c != str[i])
+	{
+		if (str[i] == '\0')
+			return (0);
+		i++;
+	}
+	return (1);
+}
