@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix_finder.c                                 :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42poto.com>     +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 17:14:55 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/08/12 17:16:00 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/06/01 16:22:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_matrix_finder(char *str, int c)
-{
-	int		i;
+#include "../inc/philo.h"
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (i);
-		i++;
-	}
+int main(void)
+{
+	printf("Hello world\n");
 	return (0);
 }
