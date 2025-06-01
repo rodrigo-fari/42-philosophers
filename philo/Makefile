@@ -6,8 +6,8 @@ OBJ_DIR				= obj/
 CC					= cc
 CFLAGS				= -pthread -fsanitize=thread -Wall -Werror -Wextra -I$(INC)
 RM					= rm -rf
-SRCS				= $(wildcard $(SRC_DIR)*.c)
-OBJS				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+SRCS				= $(shell find $(SRC_DIR) -name "*.c")
+OBJS				= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 BOLD				= \033[1m
 UNDERLINE			= \033[4m
@@ -18,7 +18,7 @@ HIDDEN				= \033[8m
 GREEN				= \033[0;32m
 RESET				= \033[0m
 BLOOD_RED			= \033[38;5;52m
-WHITE				= \033[0;37m
+WHITE				= \033[1;37m
 BG_BLOOD_RED		= \033[48;5;124m
 BG_WHITE			= \033[47m
 UNDERLINE_WHITE		= \033[4;37m
@@ -32,9 +32,10 @@ $(NAME): 			$(OBJS) $(LIBFT)
 					printf "\n"
 					printf "\n"
 					printf "          ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-					printf "          ┃ ${BOLD}${BLOOD_RED}𝐏 𝐡 𝐢 𝐥 𝐨 ${WHITE}𝐬 𝐨 𝐩 𝐡 𝐞 𝐫 𝐬 ${RESET}┃\n"
+					printf "━━━━━━━━━━┫ ${BOLD}${BLOOD_RED}𝐏 𝐡 𝐢 𝐥 𝐨 ${RESET}"
+					printf "${WHITE}𝐬 𝐨 𝐩 𝐡 𝐞 𝐫 𝐬${RESET} ┃\n"
 					printf "     ┏━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━┓\n"
-					printf "     ┃ Program has compiled ${GREEN}${BOLD}${BLINK}SUCCESSFULLY! ${RESET}┃\n"
+					printf "━━━━━┫ Program has compiled ${GREEN}${BOLD}${BLINK}SUCCESSFULLY! ${RESET}┃\n"
 					printf "     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n"
 					printf "\n"
 					printf "\n"
@@ -50,9 +51,10 @@ clean:
 					printf "\n"
 					printf "\n"
 					printf "      ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-					printf "      ┃ ${BOLD}${BLOOD_RED}𝐏 𝐡 𝐢 𝐥 𝐨 ${UNDERLINE}${WHITE}𝐬 𝐨 𝐩 𝐡 𝐞 𝐫 𝐬 ${RESET}┃\n"
+					printf "━━━━━━┫ ${BOLD}${BLOOD_RED}𝐏 𝐡 𝐢 𝐥 𝐨 ${RESET}"
+					printf "${WHITE}𝐬 𝐨 𝐩 𝐡 𝐞 𝐫 𝐬 ${RESET}┃\n"
 					printf "     ┏┻━━━━━━━━━━━━━━━━━━━━━━━━━┻┓\n"
-					printf "     ┃ Program has been ${RED}${BOLD}${BLINK}DELETED. ${RESET}┃\n"
+					printf "━━━━━┫ Program has been ${RED}${BOLD}${BLINK}DELETED. ${RESET}┃\n"
 					printf "     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n"
 					printf "\n"
 					printf "\n"

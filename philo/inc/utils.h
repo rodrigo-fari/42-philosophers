@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/01 19:58:45 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/06/01 20:09:29 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/06/01 20:10:24 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	main(int ac, char **av)
-{
-	if (verify_arguments(ac, av) == ERROR)
-		return (1);
-	printf(GREEN"\nStarting Program\n\n"RESET);
-	return (0);
-}
+#endif
