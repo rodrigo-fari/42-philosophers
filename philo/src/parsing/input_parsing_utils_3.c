@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   input_parsing_utils_3.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/01 20:09:31 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 14:42:32 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/06/02 13:22:12 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/06/02 13:34:53 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "philo.h"
 
-typedef enum e_error
+int	array_len(char **array)
 {
-	SUCCESS = 0,
-	INVALID_ARG_COUNT,
-	NON_NUMERIC_ARG,
-	NUMBER_TOO_BIG,
-	TIME_TOO_SMALL,
-	INSUFFICIENT_DISHES,
-	TOO_FEW_PHILOSOPHERS
-}	t_error;
+	int	len;
 
-#endif
+	len = 0;
+	while (array[len])
+		len++;
+	return (len);
+}
+
+bool	check_minimum_time(char **array)
+{
+	if (ft_atoi(array[2]) < 60
+		|| ft_atoi(array[3]) < 60
+		|| ft_atoi(array[4]) < 60)
+		return (PARSE_ERROR);
+	return (PARSE_SUCCESS);
+}

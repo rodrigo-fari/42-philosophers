@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_parsing.c                                    :+:      :+:    :+:   */
+/*   input_parsing_utils_1.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:56:46 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/01 19:01:07 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:49:31 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ bool	array_content(char **array)
 	while (array[i])
 	{
 		if (!array[i][0] || !is_digit(array[i]))
-			return (false);
+			return (PARSE_ERROR);
 		i++;
 	}
-	return (true);
+	return (PARSE_SUCCESS);
 }
 
 bool	is_digit(char *str)
@@ -34,10 +34,10 @@ bool	is_digit(char *str)
 	while (str[i])
 	{
 		if (str[i] && (str[i] < '0' || str[i] > '9'))
-			return (false);
+			return (PARSE_ERROR);
 		i++;
 	}
-	return (true);
+	return (PARSE_SUCCESS);
 }
 
 int	ft_atoi(const char *nptr)
@@ -91,4 +91,14 @@ long	ft_atol(const char *s)
 		i++;
 	}
 	return (res * coeff);
+}
+
+bool	number_of_dishes(char **array)
+{
+	if (array[array_len(array) - 1])
+	{
+		if (ft_atoi(array[array_len(array) - 1]) <= 0)
+			return (PARSE_ERROR);
+	}
+	return (PARSE_SUCCESS);
 }

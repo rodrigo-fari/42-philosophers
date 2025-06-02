@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/01 20:15:26 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:42:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@
 # include <stdbool.h>
 
 //[OWN INCLUDES]
+# include "error.h"
 # include "colors.h"
 # include "parsing.h"
-# include "error.h"
 # include "utils.h"
-
 
 #endif

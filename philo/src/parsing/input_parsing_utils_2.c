@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils_2.c                                  :+:      :+:    :+:   */
+/*   input_parsing_utils_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 19:20:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/01 19:59:53 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:44:51 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,22 @@ bool	verify_number_size(char **array)
 	while (array[i])
 	{
 		if (ft_atoi(array[i]) != ft_atol(array[i]))
-			return (false);
+			return (PARSE_ERROR);
 		i++;
 	}
-	return (true);
+	return (PARSE_SUCCESS);
 }
 
 bool	number_of_philosophers(char **array)
 {
 	if (ft_atoi(array[1]) == 1)
-		return (false);
-	return (true);
+		return (PARSE_ERROR);
+	return (PARSE_SUCCESS);
 }
 
-bool	check_minimum_time(char **array)
+bool	number_of_philosophers_2(char **array)
 {
-	if (ft_atoi(array[2]) < 60
-		|| ft_atoi(array[3]) < 60
-		|| ft_atoi(array[4]) < 60)
-		return (false);
-	return (true);
+	if (ft_atoi(array[1]) <= 0)
+		return (PARSE_ERROR);
+	return (PARSE_SUCCESS);
 }
