@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 20:09:25 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 14:45:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 21:15:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ bool	number_of_philosophers_2(char **array);
 //[INPUT_PARSING_UTILS_3.C]
 int		array_len(char **array);
 bool	check_minimum_time(char **array);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

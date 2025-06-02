@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_initc.c                                     :+:      :+:    :+:   */
+/*   phi_struct_initc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:36:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 19:06:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 22:13:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_table_struct(t_table *table, char **av)
 	int	i;
 
 	table->forks = ft_calloc(sizeof(pthread_mutex_t),
-	table->data->total_philos);
+			table->data->total_philos);
 	if (!table->forks)
 	{
 		error_handler(MEMORY_ERROR);

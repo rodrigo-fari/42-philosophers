@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 19:06:27 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 22:12:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,27 @@ void	init_structs(char **av);
 void	init_data_struct(t_data	*data, char **av);
 void	init_table_struct(t_table *table, char **av);
 void	init_philo_struct(t_global *global, t_table *table, t_data *data,
-				t_philo *philos);
+			t_philo *philos);
 void	init_global_struct(t_global *global, t_table *table);
 
-//[PH2][TIME MACHINE]
-long	current_time();
-//[PH3 UTILS 1]
-void	*ft_calloc(size_t nmemb, size_t size);
+//[PH2][TIME MACHINE & LOG]
+long	current_time(void);
+void	log_manager(t_philo *philo, char *message);
+
+//[PH2][MAIN EXECUTION]
+void	*ph_dinner_time(void *philo_struct);
+void	*adm_monitor(void *adm_thread);
+
+//[PH2][PHILO ACTIONS 1 & 2]
+void	ph_action_think(t_philo *philo);
+void	ph_action_take_l_fork(t_philo *philo);
+void	ph_action_take_r_fork(t_philo *philo);
+void	ph_action_eat(t_philo *philo);
+void	ph_action_putdown_forks(t_philo *philo);
+void	ph_action_sleep(t_philo *philo);
+
+//[PH2][ADM ACTIONS]
+void	adm_check_dinner_time(t_philo *philo);
+void	adm_meal_count(t_philo *philo);
 
 #endif
