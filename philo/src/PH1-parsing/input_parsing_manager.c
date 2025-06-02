@@ -6,12 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:56:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 14:40:49 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:30:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+//Function responsable to check input syntax.
 t_error	verify_arguments(int ac, char **av)
 {
 	if (ac < 5 || ac > 6)
@@ -29,6 +30,7 @@ t_error	verify_arguments(int ac, char **av)
 	return (SUCCESS);
 }
 
+//Function responsable to print the righ message for the right error code.
 void	error_handler(t_error error)
 {
 	const char	*messages[] = {
@@ -44,8 +46,10 @@ big.\n\n"RESET,
 	[INSUFFICIENT_DISHES] = BRED"\n[ERROR]"BWHITE"Insuficient number of \
 dishes.\n\n"RESET,
 	[TOO_FEW_PHILOSOPHERS] = BRED"\n[ERROR]"BWHITE"Nunumber of \
-Philosophers cannot be less then 1.\n\n"RESET
+Philosophers cannot be less then 1.\n\n"RESET,
+	[MEMORY_ERROR] = BRED"\n[ERROR]"BWHITE"Unable to allocate memory.\n\n"RESET
 	};
+
 	if (error != SUCCESS)
 		printf("%s", messages[error]);
 }

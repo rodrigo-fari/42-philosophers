@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 14:41:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:34:40 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_error	error_code;
-	
+
 	error_code = verify_arguments(ac, av);
 	if (error_code != SUCCESS)
 	{

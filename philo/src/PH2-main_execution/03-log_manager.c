@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   log_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/01 20:09:31 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 18:29:31 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/06/02 19:09:45 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/06/02 19:13:26 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "philo.h"
 
-typedef enum e_error
+void	log_manager(t_philo *philo, char *message)
 {
-	SUCCESS = 0,
-	INVALID_ARG_COUNT,
-	NON_NUMERIC_ARG,
-	NUMBER_TOO_BIG,
-	TIME_TOO_SMALL,
-	INSUFFICIENT_DISHES,
-	TOO_FEW_PHILOSOPHERS,
-	MEMORY_ERROR
-}	t_error;
-
-#endif
+	pthread_mutex_lock(&philo->global->table->write_lock);
+	if (!philo->global->simulation_end)
+		printf("%lu %d $s\n", philo->data->start_time, philo->id, message);
+	pthread_mutex_unlock(&philo->global->table->write_lock);
+}
