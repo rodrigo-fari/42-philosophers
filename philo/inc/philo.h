@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 13:31:14 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:39:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_global
 {
 	int				simulation_end;
 	int				all_meals_reached;
+	int				ready_threads;
+	pthread_mutex_t	simulation_end_lock;
+	pthread_mutex_t	all_meals_lock;
 	pthread_mutex_t	end_lock;
 	t_table			*table;
 }	t_global;
@@ -65,6 +68,7 @@ typedef struct s_philo
 {
 	int				id;
 	int				meals_eaten;
+	long			start_time;
 	long			last_meal_time;
 	pthread_t		thread_id;
 	pthread_mutex_t	*left_fork;
@@ -74,9 +78,9 @@ typedef struct s_philo
 }	t_philo;
 
 //[PH2][STRUCTURES INITIALIZATION]
-void	init_structs(t_global *global, t_philo *philo, t_data *data, char **av);
+void	init_program(t_global *global, t_philo *philo, t_data *data, char **av);
 void	init_data_struct(t_data	*data, char **av);
-void	init_table_struct(t_table *table, char **av);
+void	init_table_struct(t_table *table, t_data *data);
 void	init_philo_struct(t_global *global, t_table *table, t_data *data,
 			t_philo *philos);
 void	init_global_struct(t_global *global, t_table *table);
@@ -88,9 +92,9 @@ void	create_threads(t_global *global, t_philo *philos,
 			pthread_t *monitor, t_data *data);
 void	join_threads(t_philo *philos, t_data *data, pthread_t *monitor);
 
-//[PH2][MAIN EXECUTION]
-void	*ph_dinner_time(void *philo_struct);
+//[PH2][MAIN ROUTINES]
 void	*adm_monitor(void *adm_thread);
+void	*ph_dinner_time(void *philo_struct);
 
 //[PH2][ADM ACTIONS 1 & 2]
 bool	adm_check_dinner_time(t_philo *philo);
@@ -107,6 +111,9 @@ void	ph_action_take_r_fork(t_philo *philo);
 void	ph_action_eat(t_philo *philo);
 void	ph_action_putdown_forks(t_philo *philo);
 void	ph_action_sleep(t_philo *philo);
+
+//[PH3][FREE PROGRAM]
+void	free_program(t_data *data, t_global *global, t_philo *philos);
 
 
 #endif

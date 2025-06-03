@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 13:28:04 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:54:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	main(int ac, char **av)
 		error_handler(error_code);
 		return (EXIT_FAILURE);
 	}
-	init_structs(&global, &philo, &data, av);
-	data.start_time = current_time();
-	//loop join monitor and philo
-	//free_program_1();
-	//free_program_2();
+	printf("parsing done\n");
+	init_program(&global, &philo, &data, av);
 	return (EXIT_SUCCESS);
 }

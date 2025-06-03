@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:43:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 21:25:59 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:16:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ph_action_think(t_philo *philo)
 {
-	log_mamanger(philo, "is thinking");
+	log_manager(philo, "is thinking");
 }
 
 void	ph_action_take_l_fork(t_philo *philo)

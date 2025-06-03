@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phi_initc_structs.c                                :+:      :+:    :+:   */
+/*   phi_init_program.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:36:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 13:22:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:48:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-//Function reponsable for controling the struct initialization
-void	init_structs(t_global *global, t_philo *philo, t_data *data, char **av)
+void	init_program(t_global *global, t_philo *philos, t_data *data, char **av)
 {
-	t_table		*table;
+	t_table		table;
 	pthread_t	monitor;
 
-	table = NULL;
-	philo = malloc(sizeof(t_philo) * atoi(av[1]));
-	if (!philo)
-		return(NULL);
+	philos = malloc(sizeof(t_philo) * atoi(av[1]));
 	init_data_struct(data, av);
-	init_table_struct(table, data);
-	init_philo_struct(global, table, data, philo);
-	init_global_struct(global, table);
-	create_join_threads(&global, &philo, &monitor, &data);
+	printf("data inited\n");
+	init_table_struct(&table, data);
+	printf("table inited\n");
+	init_philo_struct(global, &table, data, philos);
+	printf("philo inited\n");
+	init_global_struct(global, &table);
+	printf("global inited\n");
+	data->start_time = current_time();
+	create_join_threads(global, philos, &monitor, data);
+	free_program(data, global, philos);
 }
 
-//Function responsable for the initialization of the data struct.
 void	init_data_struct(t_data	*data, char **av)
 {
 	data->total_philos = ft_atoi(av[1]);
@@ -42,36 +43,30 @@ void	init_data_struct(t_data	*data, char **av)
 		data->max_meals = -1;
 }
 
-//Function reponsable for the initialization of the table struct.
-void	init_table_struct(t_table *table, char **av)
+void	init_table_struct(t_table *table, t_data *data)
 {
 	int	i;
 
-	table->forks = ft_calloc(sizeof(pthread_mutex_t),
-			table->data->total_philos);
+	table->forks = malloc(data->total_philos * sizeof(pthread_mutex_t));
 	if (!table->forks)
-	{
 		error_handler(MEMORY_ERROR);
-		return (NULL);
-	}
 	i = 0;
-	while (i < table->data->total_philos)
+	while (i < data->total_philos)
 	{
 		pthread_mutex_init(&table->forks[i], NULL);
 		i++;
 	}
-	pthread_mutex_init(&table->meal_lock, NULL);
+	if (pthread_mutex_init(&table->meal_lock, NULL))
 	pthread_mutex_init(&table->write_lock, NULL);
 }
 
-//Function reponsable for the initialization of the philosophers struct.
 void	init_philo_struct(t_global *global, t_table *table, t_data *data,
 				t_philo *philos)
 {
 	int	i;
 
 	i = 0;
-	while (i < table->data->total_philos)
+	while (i < data->total_philos)
 	{
 		philos[i].id = i + 1;
 		philos[i].left_fork = &table->forks[i];
@@ -81,15 +76,17 @@ void	init_philo_struct(t_global *global, t_table *table, t_data *data,
 		philos[i].global = global;
 		philos[i].meals_eaten = 0;
 		philos[i].last_meal_time = current_time();
+		philos[i].start_time = current_time();
 		i++;
 	}
 }
 
-//Function reponsable for the initialization of the global struct.
 void	init_global_struct(t_global *global, t_table *table)
 {
 	pthread_mutex_init(&global->end_lock, NULL);
+	pthread_mutex_init(&global->all_meals_lock, NULL);
 	global->simulation_end = 0;
 	global->all_meals_reached = 0;
+	global->ready_threads = 0;
 	global->table = table;
 }

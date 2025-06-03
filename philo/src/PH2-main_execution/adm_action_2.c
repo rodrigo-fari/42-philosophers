@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 02:10:23 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 02:29:13 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:59:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	adm_is_everyone_ok(t_global *global, t_data *data)
 {
 	int		i;
 	long	lst_meal;
+	long	time;
 
+	time = current_time();
 	i = 0;
 	lst_meal = 0;
 	while (true)
@@ -25,14 +27,19 @@ void	adm_is_everyone_ok(t_global *global, t_data *data)
 		while (i < data->total_philos)
 		{
 			pthread_mutex_lock(&global->table->meal_lock);
-			lst_meal = (current_time() - global->table->philos->last_meal_time);
-			if (lst_meal > data->ttd)
+			printf("valor de philo = %ld\n", global->table->philos[i].last_meal_time);
+			printf("valor de time = %ld\n", time);
+			lst_meal = (time - global->table->philos[i].start_time);
+			printf("valor de philo - time = %ld\n", global->table->philos[i].start_time);
+			printf("valor de time - philo = %ld\n", lst_meal);
+			if (lst_meal >= data->ttd)
 			{
 				pthread_mutex_lock(&global->end_lock);
 				global->simulation_end = 1;
 				pthread_mutex_unlock(&global->end_lock);
 				log_manager(&global->table->philos[i], "died");
-				return (NULL);
+				printf("Passou do log\n");
+				return ;
 			}
 			i++;
 		}
@@ -63,7 +70,7 @@ void	adm_is_everyone_full(t_global *global, t_data *data)
 			global->simulation_end = 1;
 			global->all_meals_reached = 1;
 			pthread_mutex_unlock(&global->end_lock);
-			return (NULL);
+			return ;
 		}
 	}
 }
