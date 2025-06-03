@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:36:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 22:47:40 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 00:00:53 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ void	init_program(t_global *global, t_philo *philos, t_data *data, char **av)
 	pthread_t	monitor;
 
 	philos = malloc(sizeof(t_philo) * atoi(av[1]));
+	if (!philos)
+	{
+		error_handler(MEMORY_ERROR);
+		return ;
+	}
 	init_data_struct(data, av);
 	init_table_struct(&table, data);
 	init_global_struct(global, &table);
 	init_philo_struct(global, &table, data, philos);
-	data->start_time = current_time();
 	create_join_threads(global, philos, &monitor, data);
 	free_program(data, global, philos);
 }
@@ -72,8 +76,8 @@ void	init_philo_struct(t_global *global, t_table *table, t_data *data,
 		philos[i].data = data;
 		philos[i].global = global;
 		philos[i].meals_eaten = 0;
-		philos[i].last_meal_time = current_time();
-		philos[i].start_time = current_time();
+		philos[i].last_meal_time = get_time();
+		pthread_mutex_init(&philos[i].meal_lock, NULL);
 		i++;
 	}
 	table->philos = philos;

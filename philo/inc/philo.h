@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 22:44:59 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 00:05:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_philo
 	pthread_t		thread_id;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	meal_lock;
 	t_data			*data;
 	t_global		*global;
 }	t_philo;
@@ -96,18 +97,20 @@ void	join_threads(t_philo *philos, t_data *data, pthread_t *monitor);
 void	*adm_monitor(void *adm_thread);
 void	*ph_dinner_time(void *philo_struct);
 
-//[PH2][ADM ACTIONS 1 & 2]
+//[PH2][ADM ACTIONS 1 & TIME MANAGER]
 bool	adm_check_dinner_time(t_philo *philo);
 void	adm_meal_count(t_philo *philo);
-long	current_time(void);
-void	log_manager(t_philo *philo, char *message);
 void	adm_is_everyone_ok(t_global *global, t_data *data);
 void	adm_is_everyone_full(t_global *global, t_data *data);
+void	log_manager(t_philo *philo, char *message);
+long	get_time(void);
+long	current_time(long time);
+long	get_time2(void);
+void	ft_usleep(long int miliseconds);
 
 //[PH2][PHILO ACTIONS 1 & 2]
 void	ph_action_think(t_philo *philo);
-void	ph_action_take_l_fork(t_philo *philo);
-void	ph_action_take_r_fork(t_philo *philo);
+void	ph_action_take_forks(t_philo *philo);
 void	ph_action_eat(t_philo *philo);
 void	ph_action_putdown_forks(t_philo *philo);
 void	ph_action_sleep(t_philo *philo);
