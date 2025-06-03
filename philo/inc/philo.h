@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 02:01:27 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 02:12:01 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_philo
 	t_global		*global;
 }	t_philo;
 
-//![PH2][STRUCTURES INITIALIZATION]
+//[PH2][STRUCTURES INITIALIZATION]
 void	init_structs(char **av);
 void	init_data_struct(t_data	*data, char **av);
 void	init_table_struct(t_table *table, char **av);
@@ -81,15 +81,17 @@ void	init_philo_struct(t_global *global, t_table *table, t_data *data,
 			t_philo *philos);
 void	init_global_struct(t_global *global, t_table *table);
 
-//[PH2][TIME MACHINE & LOG]
-long	current_time(void);
-void	log_manager(t_philo *philo, char *message);
-
-//[PH2][ADM ACTIONS 1]
-bool	adm_check_dinner_time(t_philo *philo);
-void	adm_meal_count(t_philo *philo);
+//[PH2][MAIN EXECUTION]
 void	*ph_dinner_time(void *philo_struct);
 void	*adm_monitor(void *adm_thread);
+
+//[PH2][ADM ACTIONS 1 & 2]
+bool	adm_check_dinner_time(t_philo *philo);
+void	adm_meal_count(t_philo *philo);
+long	current_time(void);
+void	log_manager(t_philo *philo, char *message);
+void	adm_is_everyone_ok(t_global *global, t_data *data);
+void	adm_is_everyone_full(t_global *global, t_data *data);
 
 //[PH2][PHILO ACTIONS 1 & 2]
 void	ph_action_think(t_philo *philo);

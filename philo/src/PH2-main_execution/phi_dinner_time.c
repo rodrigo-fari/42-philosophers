@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:16:00 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 01:59:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 02:12:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,14 @@ void	*ph_dinner_time(void *philo_struct)
 	return (NULL);
 }
 
-void	*adm_monitor(void *adm_thread)
+void	*adm_monitor(void *global_struct)
 {
-	adm_is_everyone_ok();
-	adm_is_everyone_full();
+	t_global	*global;
+	t_data		*data;
+
+	global = (t_global *)global_struct;
+	data = global->table->data;
+	adm_is_everyone_ok(global, data);
+	adm_is_everyone_full(global, data);
 	usleep(1000);
 }
