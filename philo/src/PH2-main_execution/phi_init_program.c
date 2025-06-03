@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:36:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 15:48:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:57:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	init_program(t_global *global, t_philo *philos, t_data *data, char **av)
 	printf("data inited\n");
 	init_table_struct(&table, data);
 	printf("table inited\n");
-	init_philo_struct(global, &table, data, philos);
-	printf("philo inited\n");
 	init_global_struct(global, &table);
 	printf("global inited\n");
+	init_philo_struct(global, &table, data, philos);
+	printf("philo inited\n");
 	data->start_time = current_time();
 	create_join_threads(global, philos, &monitor, data);
 	free_program(data, global, philos);

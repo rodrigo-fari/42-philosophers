@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 02:10:23 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 15:59:32 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:35:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,30 @@ void	adm_is_everyone_ok(t_global *global, t_data *data)
 {
 	int		i;
 	long	lst_meal;
-	long	time;
 
-	time = current_time();
 	i = 0;
-	lst_meal = 0;
+	printf("Entrou na funcao adm_is_everyone_ok\n");
 	while (true)
 	{
 		while (i < data->total_philos)
 		{
+			printf("\n[while cycle][%d]\n\n", i);
 			pthread_mutex_lock(&global->table->meal_lock);
-			printf("valor de philo = %ld\n", global->table->philos[i].last_meal_time);
-			printf("valor de time = %ld\n", time);
-			lst_meal = (time - global->table->philos[i].start_time);
-			printf("valor de philo - time = %ld\n", global->table->philos[i].start_time);
-			printf("valor de time - philo = %ld\n", lst_meal);
+			lst_meal = current_time() - global->table->philos[i].last_meal_time; // Corrigido para usar last_meal_time
 			if (lst_meal >= data->ttd)
 			{
+				printf("Entrou no if (indevido)\n");
 				pthread_mutex_lock(&global->end_lock);
 				global->simulation_end = 1;
 				pthread_mutex_unlock(&global->end_lock);
 				log_manager(&global->table->philos[i], "died");
-				printf("Passou do log\n");
-				return ;
+				pthread_mutex_unlock(&global->table->meal_lock); // Garantir que o mutex seja liberado
+				return;
 			}
+			pthread_mutex_unlock(&global->table->meal_lock);
 			i++;
 		}
-		pthread_mutex_unlock(&global->table->meal_lock);
+		usleep(1000); // Adicionado para evitar consumo excessivo de CPU
 	}
 }
 

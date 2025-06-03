@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:16:00 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 14:56:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:43:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	*ph_dinner_time(void *philo_struct)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_struct;
+	printf("dinner_time total philos : %d\n", philo->data->total_philos);
 	if (philo->global->ready_threads == 1)
 	{
 		while (true)
@@ -43,8 +44,10 @@ void	*adm_monitor(void *global_struct)
 	t_data		*data;
 
 	global = (t_global *)global_struct;
+	printf("data->philos nbr = %d\n", global->table->data->total_philos);
 	data = global->table->data;
-	printf("Monitor initialized\n");
+	printf("[adm] global var defined\n");
+	printf("[adm] data var defined\n");
 	adm_is_everyone_ok(global, data);
 	printf("monitor task 1 done\n");
 	adm_is_everyone_full(global, data);
