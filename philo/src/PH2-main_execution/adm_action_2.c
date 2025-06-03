@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 02:10:23 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 19:35:54 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 22:53:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,21 @@ void	adm_is_everyone_ok(t_global *global, t_data *data)
 	{
 		while (i < data->total_philos)
 		{
-			printf("\n[while cycle][%d]\n\n", i);
 			pthread_mutex_lock(&global->table->meal_lock);
-			lst_meal = current_time() - global->table->philos[i].last_meal_time; // Corrigido para usar last_meal_time
+			lst_meal = current_time() - global->table->philos[i].last_meal_time;
 			if (lst_meal >= data->ttd)
 			{
-				printf("Entrou no if (indevido)\n");
 				pthread_mutex_lock(&global->end_lock);
 				global->simulation_end = 1;
 				pthread_mutex_unlock(&global->end_lock);
 				log_manager(&global->table->philos[i], "died");
-				pthread_mutex_unlock(&global->table->meal_lock); // Garantir que o mutex seja liberado
-				return;
+				pthread_mutex_unlock(&global->table->meal_lock);
+				return ;
 			}
 			pthread_mutex_unlock(&global->table->meal_lock);
 			i++;
 		}
-		usleep(1000); // Adicionado para evitar consumo excessivo de CPU
+		usleep(1000);
 	}
 }
 

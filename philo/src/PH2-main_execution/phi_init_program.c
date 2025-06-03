@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:36:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 18:57:27 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 22:47:40 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,9 @@ void	init_program(t_global *global, t_philo *philos, t_data *data, char **av)
 
 	philos = malloc(sizeof(t_philo) * atoi(av[1]));
 	init_data_struct(data, av);
-	printf("data inited\n");
 	init_table_struct(&table, data);
-	printf("table inited\n");
 	init_global_struct(global, &table);
-	printf("global inited\n");
 	init_philo_struct(global, &table, data, philos);
-	printf("philo inited\n");
 	data->start_time = current_time();
 	create_join_threads(global, philos, &monitor, data);
 	free_program(data, global, philos);
@@ -47,6 +43,7 @@ void	init_table_struct(t_table *table, t_data *data)
 {
 	int	i;
 
+	table->data = data;
 	table->forks = malloc(data->total_philos * sizeof(pthread_mutex_t));
 	if (!table->forks)
 		error_handler(MEMORY_ERROR);
@@ -56,7 +53,7 @@ void	init_table_struct(t_table *table, t_data *data)
 		pthread_mutex_init(&table->forks[i], NULL);
 		i++;
 	}
-	if (pthread_mutex_init(&table->meal_lock, NULL))
+	table->philos = NULL;
 	pthread_mutex_init(&table->write_lock, NULL);
 }
 
@@ -79,6 +76,7 @@ void	init_philo_struct(t_global *global, t_table *table, t_data *data,
 		philos[i].start_time = current_time();
 		i++;
 	}
+	table->philos = philos;
 }
 
 void	init_global_struct(t_global *global, t_table *table)

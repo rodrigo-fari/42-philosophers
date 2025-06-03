@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:16:00 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 19:43:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 22:48:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	*adm_monitor(void *global_struct)
 	t_data		*data;
 
 	global = (t_global *)global_struct;
-	printf("data->philos nbr = %d\n", global->table->data->total_philos);
 	data = global->table->data;
 	printf("[adm] global var defined\n");
 	printf("[adm] data var defined\n");

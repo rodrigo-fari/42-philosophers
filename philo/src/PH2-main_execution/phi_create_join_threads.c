@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:28:28 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 19:41:40 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 22:47:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ void	create_threads(t_global *global, t_philo *philos,
 	i = 0;
 	while (i < data->total_philos)
 	{
-		pthread_create(&philos[i].thread_id, NULL, ph_dinner_time, &philos[i]);
-		printf("Philo[%d] created.\n", (i + 1));
+		pthread_create(&philos[i].thread_id, NULL, &ph_dinner_time, &philos[i]);
 		i++;
 	}
-	pthread_create(monitor, NULL, adm_monitor, &global);
+	pthread_create(monitor, NULL, &adm_monitor, global);
 }
 
 void	join_threads(t_philo *philos, t_data *data, pthread_t *monitor)
