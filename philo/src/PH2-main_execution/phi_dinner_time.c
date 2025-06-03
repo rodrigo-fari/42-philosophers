@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:16:00 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 22:14:30 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 01:59:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	*ph_dinner_time(void *philo_struct)
 		adm_meal_count(philo_struct);
 		ph_action_putdown_forks(philo_struct);
 		ph_action_sleep(philo_struct);
-		adm_check_dinner_time(philo_struct);
+		if (!adm_check_dinner_time(philo_struct));
+			break ;
 	}
 	return (NULL);
 }

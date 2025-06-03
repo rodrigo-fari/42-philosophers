@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 22:12:33 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 02:01:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ void	init_global_struct(t_global *global, t_table *table);
 long	current_time(void);
 void	log_manager(t_philo *philo, char *message);
 
-//[PH2][MAIN EXECUTION]
+//[PH2][ADM ACTIONS 1]
+bool	adm_check_dinner_time(t_philo *philo);
+void	adm_meal_count(t_philo *philo);
 void	*ph_dinner_time(void *philo_struct);
 void	*adm_monitor(void *adm_thread);
 
@@ -97,8 +99,5 @@ void	ph_action_eat(t_philo *philo);
 void	ph_action_putdown_forks(t_philo *philo);
 void	ph_action_sleep(t_philo *philo);
 
-//[PH2][ADM ACTIONS]
-void	adm_check_dinner_time(t_philo *philo);
-void	adm_meal_count(t_philo *philo);
 
 #endif
