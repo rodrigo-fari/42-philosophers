@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phi_struct_initc.c                                 :+:      :+:    :+:   */
+/*   phi_initc_structs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:36:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 22:13:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:22:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 //Function reponsable for controling the struct initialization
-void	init_structs(char **av)
+void	init_structs(t_global *global, t_philo *philo, t_data *data, char **av)
 {
-	t_data		*data;
 	t_table		*table;
-	t_philo		*philo;
-	t_global	*global;
+	pthread_t	monitor;
 
-	data = NULL;
 	table = NULL;
-	philo = NULL;
-	global = NULL;
+	philo = malloc(sizeof(t_philo) * atoi(av[1]));
+	if (!philo)
+		return(NULL);
 	init_data_struct(data, av);
 	init_table_struct(table, data);
 	init_philo_struct(global, table, data, philo);
 	init_global_struct(global, table);
+	create_join_threads(&global, &philo, &monitor, &data);
 }
 
 //Function responsable for the initialization of the data struct.
