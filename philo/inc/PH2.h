@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 12:42:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 23:44:51 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 23:46:23 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_table
 typedef struct s_philo
 {
 	int				id;//Philosopher id.
+	int				meal_count;//Saves the meal count for each philosopher.
 	long			last_meal;//Time since last meal.
 	t_data			*data;//Data general info.
 	t_table			*table;//Table general info.
