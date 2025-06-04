@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:22:12 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 19:42:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:52:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 int	array_len(char **array)
 {

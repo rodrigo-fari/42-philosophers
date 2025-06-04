@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:36:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 00:00:53 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:52:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 void	init_program(t_global *global, t_philo *philos, t_data *data, char **av)
 {

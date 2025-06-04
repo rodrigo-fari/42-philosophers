@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:28:28 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 00:31:44 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:54:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 void	create_join_threads(t_global *global, t_philo *philos,
 			pthread_t *monitor, t_data *data)
@@ -29,7 +29,7 @@ void	create_threads(t_global *global, t_philo *philos,
 	while (i < data->total_philos)
 	{
 		pthread_create(&philos[i].thread_id, NULL, &ph_dinner_time, &philos[i]);
-		usleep(100);
+		ft_usleep(1);
 		i++;
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 23:03:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 23:33:16 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:52:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 long	get_time(void)
 {

@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:51:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 14:22:31 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:52:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 void	free_program(t_data *data, t_global *global, t_philo *philos)
 {

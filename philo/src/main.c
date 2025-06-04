@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/03 23:39:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:52:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 int	main(int ac, char **av)
 {

@@ -6,13 +6,12 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:56:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/02 18:30:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:46:58 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH1.h"
 
-//Function responsable to check input syntax.
 t_error	verify_arguments(int ac, char **av)
 {
 	if (ac < 5 || ac > 6)
@@ -30,7 +29,6 @@ t_error	verify_arguments(int ac, char **av)
 	return (SUCCESS);
 }
 
-//Function responsable to print the righ message for the right error code.
 void	error_handler(t_error error)
 {
 	const char	*messages[] = {

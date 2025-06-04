@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:43:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 00:31:22 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:54:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 void	ph_action_think(t_philo *philo)
 {
@@ -39,5 +39,5 @@ void	ph_action_eat(t_philo *philo)
 	pthread_mutex_lock(&philo->meal_lock);
 	philo->last_meal_time = get_time();
 	pthread_mutex_unlock(&philo->meal_lock);
-	usleep(philo->data->tte * 1000);
+	ft_usleep(philo->data->tte * 1);
 }

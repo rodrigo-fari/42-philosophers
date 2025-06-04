@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 02:10:23 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 00:34:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:53:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "PH2.h"
 
 void	adm_is_everyone_ok(t_global *global, t_data *data)
 {
@@ -44,7 +44,7 @@ void	adm_is_everyone_ok(t_global *global, t_data *data)
 			pthread_mutex_unlock(&global->table->meal_lock);
 			i++;
 		}
-		usleep(1000);
+		ft_usleep(1);
 	}
 }
 
