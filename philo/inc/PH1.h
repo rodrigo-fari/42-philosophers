@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 12:51:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 22:06:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PH1_H
 
 # include "PH2.h"
+# include "PH3.h"
+# include "PHU.h"
 
 # define PARSE_ERROR 0
 # define PARSE_SUCCESS 1

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 12:42:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 12:49:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 22:11:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "colors.h"
+# include "PH2.h"
+# include "PH3.h"
+# include "PHU.h"
+
+typedef struct s_global	t_global;
+typedef struct s_data	t_data;
+typedef struct s_table	t_table;
+typedef struct s_philo	t_philo;
 
 typedef struct s_global
 {
@@ -66,32 +74,6 @@ typedef struct s_philo
 }	t_philo;
 
 
-void	init_program(t_global *global, t_philo *philo, t_data *data, char **av);
-void	init_data_struct(t_data	*data, char **av);
-void	init_table_struct(t_table *table, t_data *data);
-void	init_philo_struct(t_global *global, t_table *table, t_data *data,
-			t_philo *philos);
-void	init_global_struct(t_global *global, t_table *table);
-void	create_join_threads(t_global *global, t_philo *philos,
-			pthread_t *monitor, t_data *data);
-void	create_threads(t_global *global, t_philo *philos,
-			pthread_t *monitor, t_data *data);
-void	join_threads(t_philo *philos, t_data *data, pthread_t *monitor);
-void	*adm_monitor(void *adm_thread);
-void	*ph_dinner_time(void *philo_struct);
-bool	adm_check_dinner_time(t_philo *philo);
-void	adm_meal_count(t_philo *philo);
-void	adm_is_everyone_ok(t_global *global, t_data *data);
-void	adm_is_everyone_full(t_global *global, t_data *data);
-void	log_manager(t_philo *philo, char *message);
-long	get_time(void);
-long	current_time(long time);
-long	get_time2(void);
-void	ft_usleep(long int miliseconds);
-void	ph_action_think(t_philo *philo);
-void	ph_action_take_forks(t_philo *philo);
-void	ph_action_eat(t_philo *philo);
-void	ph_action_putdown_forks(t_philo *philo);
-void	ph_action_sleep(t_philo *philo);
+
 
 #endif

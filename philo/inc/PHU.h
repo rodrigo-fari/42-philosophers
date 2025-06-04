@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 12:51:09 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/04 12:51:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/04 22:06:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PHU_H
 
 # include "PH1.h"
+# include "PH2.h"
+# include "PH3.h"
 
 bool	array_content(char **array);
 bool	is_digit(char *str);
