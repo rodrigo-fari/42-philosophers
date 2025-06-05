@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:22:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 03:11:30 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:21:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ pthread_mutex_t	*create_forks(pthread_mutex_t *forks, t_data *data)
 	while (i < data->nop)
 	{
 		pthread_mutex_init(&forks[i], NULL);
-		printf("[DEBUG] Fork  [ %d ] Inicializado.\n", (i + 1));
 		i++;
 	}
 	return (forks);
@@ -45,7 +44,6 @@ t_philo	*create_philo(t_philo *philo, t_table *table, pthread_mutex_t *forks)
 		philo[i].last_meal_lock = malloc(sizeof(pthread_mutex_t));
 		pthread_mutex_init(philo->meal_lock, NULL);
 		pthread_mutex_init(philo->last_meal_lock, NULL);
-		printf("[DEBUG] Philo [ %d ] Criado.\n", philo[i].id);
 		i++;
 	}
 	return (philo);

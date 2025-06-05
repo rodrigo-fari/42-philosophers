@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 02:15:39 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 02:56:43 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:19:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,3 @@ int	check_for_dead_philo(t_philo *philo)
 	}
 	return (0);
 }
-

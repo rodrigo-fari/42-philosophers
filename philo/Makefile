@@ -3,7 +3,7 @@ NAME				= philo
 INC					= inc/
 SRC_DIR				= src/
 OBJ_DIR				= obj/
-CC					= clang
+CC					= cc
 CFLAGS				= -pthread -fsanitize=thread -Wall -Werror -Wextra -I$(INC)
 RM					= rm -rf
 SRCS				= $(shell find $(SRC_DIR) -name "*.c")
@@ -38,7 +38,6 @@ $(NAME): 			$(OBJS) $(LIBFT)
 					printf "     ┏━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━┓\n"
 					printf "━━━━━┫ Program has compiled ${GREEN}${BOLD}SUCCESSFULLY! ${RESET}┃\n"
 					printf "     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n"
-					printf "           ${BOLD}${RED}${BLINK}USING CLANG INSTEAD OF CC!${RESET}     \n"
 					printf "\n"
 					printf "\n"
 

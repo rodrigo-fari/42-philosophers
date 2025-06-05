@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:56:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 03:00:48 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:53:04 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ big.\n\n"RESET,
 60ms.\n\n"RESET,
 	[INSUFFICIENT_DISHES] = BRED"\n[ERROR]"BWHITE"Insuficient number of \
 dishes.\n\n"RESET,
-	[TOO_FEW_PHILOSOPHERS] = BRED"\n[ERROR]"BWHITE"Nunumber of \
-philosophers cannot be less then 1.\n\n"RESET,
+	[TOO_FEW_PHILOSOPHERS] = BRED"\n[ERROR]"BWHITE"Number of \
+philosophers cannot be less then 1, or more than 200.\n\n"RESET,
 	[MEMORY_ERROR] = BRED"\n[ERROR]"BWHITE"Unable to allocate memory.\n\n"RESET
 	};
 

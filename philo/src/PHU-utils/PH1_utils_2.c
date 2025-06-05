@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 19:20:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 02:58:35 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:51:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	number_of_philosophers(char **array)
 
 bool	number_of_philosophers_2(char **array)
 {
-	if (ft_atoi(array[1]) <= 0)
+	if (ft_atoi(array[1]) <= 0 || ft_atoi(array[1]) > 200)
 		return (PARSE_ERROR);
 	return (PARSE_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 02:58:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:22:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,11 @@ typedef enum e_error
 
 t_error	verify_arguments(int ac, char **av);
 void	error_handler(t_error err);
+
+//printf("[DEBUG] Fork  [ %d ] Limpo.\n", (i + 1)); (free_program)
+//printf("[DEBUG] Fork  [ %d ] Inicializado.\n", (i + 1)); (forks)
+//printf("[DEBUG] Philo [ %d ] Criado.\n", philo[i].id); (philos)
+//printf("[DEBUG] Programa finalizado com sucesso! \n"); (start)
+//printf("[DEBUG] Parsing realizado com sucesso.\n"); (finish)
 
 #endif
