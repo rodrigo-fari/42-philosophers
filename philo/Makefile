@@ -6,8 +6,34 @@ OBJ_DIR				= obj/
 CC					= cc
 CFLAGS				= -pthread -fsanitize=thread -Wall -Werror -Wextra -I$(INC)
 RM					= rm -rf
-SRCS				= $(shell find $(SRC_DIR) -name "*.c")
-OBJS				= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+SRCS = \
+	main.c \
+	$(SRC_DIR)PH1-parsing/input_parsing_manager.c \
+	$(SRC_DIR)PH2-main_execution/create.c \
+	$(SRC_DIR)PH2-main_execution/dinner_time.c \
+	$(SRC_DIR)PH2-main_execution/dinner_time_2.c \
+	$(SRC_DIR)PH2-main_execution/monitor_check.c \
+	$(SRC_DIR)PH2-main_execution/start_simulation.c \
+	$(SRC_DIR)PH2-main_execution/start_structs.c \
+	$(SRC_DIR)PH3-cleaner/free_program.c \
+	$(SRC_DIR)PHU-utils/PH1_utils_1.c \
+	$(SRC_DIR)PHU-utils/PH1_utils_2.c \
+	$(SRC_DIR)PHU-utils/PH1_utils_3.c \
+	$(SRC_DIR)PHU-utils/PH2_utils_1.c
+OBJS = \
+	$(OBJ_DIR)main.o \
+	$(OBJ_DIR)PH1-parsing/input_parsing_manager.o \
+	$(OBJ_DIR)PH2-main_execution/create.o \
+	$(OBJ_DIR)PH2-main_execution/dinner_time.o \
+	$(OBJ_DIR)PH2-main_execution/dinner_time_2.o \
+	$(OBJ_DIR)PH2-main_execution/monitor_check.o \
+	$(OBJ_DIR)PH2-main_execution/start_simulation.o \
+	$(OBJ_DIR)PH2-main_execution/start_structs.o \
+	$(OBJ_DIR)PH3-cleaner/free_program.o \
+	$(OBJ_DIR)PHU-utils/PH1_utils_1.o \
+	$(OBJ_DIR)PHU-utils/PH1_utils_2.o \
+	$(OBJ_DIR)PHU-utils/PH1_utils_3.o \
+	$(OBJ_DIR)PHU-utils/PH2_utils_1.o
 
 BOLD				= \033[1m
 UNDERLINE			= \033[4m

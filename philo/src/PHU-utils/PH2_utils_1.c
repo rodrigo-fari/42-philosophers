@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 02:21:42 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 15:28:13 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:44:58 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	log_msg(t_philo *philo, int state)
 		else if (state == THINKING)
 			printf("is thinking\n");
 	}
-	else if (state == DEAD && philo->data->nod == -1)
+	else if (state == DEAD && (philo->meal_count != philo->data->nod))
 		printf("%zi %d died\n",
 			get_time() - philo->table->start_time, philo->id);
 	pthread_mutex_unlock(philo->table->msg_lock);
