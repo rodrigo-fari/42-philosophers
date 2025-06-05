@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 02:15:19 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 15:16:17 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:33:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	phiaction_sleep(t_philo *philo)
 	if (philo->table->dead_philo == true)
 		return (pthread_mutex_unlock(philo->table->dead_philo_lock), -1);
 	pthread_mutex_unlock(philo->table->dead_philo_lock);
-		log_msg(philo, SLEEPING);
+	log_msg(philo, SLEEPING);
 	ft_usleep(philo->data->tts);
 	return (0);
 }
