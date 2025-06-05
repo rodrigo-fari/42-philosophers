@@ -75,16 +75,6 @@ $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 clean:
 					@$(RM) $(OBJ_DIR)/*
 					@clear
-					printf "\n"
-					printf "\n"
-					printf "      ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-					printf "━━━━━━┫ ${BOLD}${BLOOD_RED}𝐏 𝐡 𝐢 𝐥 𝐨 ${RESET}"
-					printf "${WHITE}𝐬 𝐨 𝐩 𝐡 𝐞 𝐫 𝐬 ${RESET}┃\n"
-					printf "     ┏┻━━━━━━━━━━━━━━━━━━━━━━━━━┻┓\n"
-					printf "━━━━━┫ Program has been ${RED}${BOLD}${BLINK}DELETED. ${RESET}┃\n"
-					printf "     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n"
-					printf "\n"
-					printf "\n"
 
 fclean: 			clean
 					@$(RM) $(NAME)
