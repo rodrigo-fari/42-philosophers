@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 02:15:19 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 03:06:12 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:16:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*dinner_time(void	*arg)
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
-		ft_usleep(1);
+		usleep(100);
 	if (philo->data->nop == 1)
 		return (single_philosohper(philo), arg);
 	if (philo->data->nod == 0)
@@ -72,9 +72,11 @@ int	phiaction_eat(t_philo *philo)
 
 int	phiaction_sleep(t_philo *philo)
 {
+	pthread_mutex_lock(philo->table->dead_philo_lock);
 	if (philo->table->dead_philo == true)
-		return (-1);
-	log_msg(philo, SLEEPING);
+		return (pthread_mutex_unlock(philo->table->dead_philo_lock), -1);
+	pthread_mutex_unlock(philo->table->dead_philo_lock);
+		log_msg(philo, SLEEPING);
 	ft_usleep(philo->data->tts);
 	return (0);
 }
