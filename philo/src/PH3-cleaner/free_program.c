@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:51:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 02:51:43 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 03:11:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	free_program(t_global *global)
 	}
 	i = -1;
 	while (++i < global->data->nop)
+	{
 		pthread_mutex_destroy(&global->table->forks[i]);
+		printf("[DEBUG] Fork  [ %d ] Limpo.\n", (i + 1));
+	}
 	free(global->table->forks);
 	free(global->table->philo);
 	free(global->table->msg_lock);
