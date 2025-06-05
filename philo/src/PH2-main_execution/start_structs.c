@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_struct.c                                      :+:      :+:    :+:   */
+/*   start_structs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:02:36 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 00:47:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 02:51:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_data	*init_data_struct(int ac, char **av)
 {
 	t_data	*data;
 
-	data = malloc(sizeof(data));
+	data = malloc(sizeof(t_data));
 	data->nop = ft_atoi(av[1]);
 	data->ttd = ft_atoi(av[2]);
 	data->tte = ft_atoi(av[3]);
@@ -39,18 +39,17 @@ t_table	*init_table_struct(t_data *data)
 	t_table			*table;
 	t_philo			*philo;
 	pthread_mutex_t	*forks;
-	int				i;
 
 	table = malloc(sizeof(t_table));
-	philo = malloc(sizeof(t_philo));
+	philo = malloc(sizeof(t_philo) * data->nop);
 	forks = malloc(sizeof(pthread_mutex_t) * data->nop);
 	table->msg_lock = malloc(sizeof(pthread_mutex_t));
 	table->dead_philo_lock = malloc(sizeof(pthread_mutex_t));
 	table->data = data;
-	forks = create_forks(&forks, data);
+	forks = create_forks(forks, data);
 	table->forks = forks;
-	philo = create_philo(&philo, table, forks);
-	table->philos = philo;
+	philo = create_philo(philo, table, forks);
+	table->philo = philo;
 	table->dead_philo = false;
 	pthread_mutex_init(table->dead_philo_lock, NULL);
 	pthread_mutex_init(table->msg_lock, NULL);

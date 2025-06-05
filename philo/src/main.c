@@ -6,11 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:54:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/05 00:49:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/06/05 03:01:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PH2.h"
+
+// printf("[DEBUG]\n");
 
 int	main(int ac, char **av)
 {
@@ -23,10 +25,10 @@ int	main(int ac, char **av)
 		error_handler(error_code);
 		return (EXIT_FAILURE);
 	}
-	printf("parsing done\n");
+	printf("[DEBUG] Parsing realizado com sucesso.\n");
 	global = malloc(sizeof(t_global));
 	start_structs(&global, ac, av);
-	start_simulation(global->table, global->table->philos);//[DEBUG] not implemented yet
-	free_program();//[DEBUG] not implemented yet
+	start_simulation(global->table);
+	free_program(global);
 	return (EXIT_SUCCESS);
 }
